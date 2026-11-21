@@ -7213,7 +7213,9 @@ function formatMeters(cm) {
 }
 
 function addTotalsSection(box, title, totals) {
-  box.appendChild(createElement('h3', 'side-title', title));
+  var heading = createElement('h3', 'side-title', title);
+  box.appendChild(heading);
+  var before = box.childNodes.length;
 
   for (var t = 0; t < state.cableTypes.length; t++) {
     if (!totals.byType[state.cableTypes[t].id]) {
@@ -7260,6 +7262,11 @@ function addTotalsSection(box, title, totals) {
     ratingRow.appendChild(createElement('span', '', totals.ratingOrder[r]));
     ratingRow.appendChild(createElement('span', '', totals.ratings[totals.ratingOrder[r]] + ' ' + TEXTS.unitPieces));
     box.appendChild(ratingRow);
+  }
+
+  // A section with nothing in it is not shown.
+  if (box.childNodes.length === before) {
+    box.removeChild(heading);
   }
 }
 
