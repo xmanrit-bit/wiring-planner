@@ -13,6 +13,7 @@
   .topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 10px; background: #fff; border-bottom: 1px solid #ccd; }
   .topbar-title { font-weight: 600; margin-right: 12px; }
   .status { margin-left: auto; color: #667; font-size: 12px; }
+  .app-version { color: #99a; font-size: 12px; margin-left: 12px; }
   .main { flex: 1; display: flex; min-height: 0; }
   .toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); background: #1f2937; color: #ffffff; padding: 10px 20px; border-radius: 6px; font-size: 15px; z-index: 30; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3); }
   .splitter { flex: none; width: 5px; cursor: col-resize; background: #dfe3ea; }
@@ -85,6 +86,7 @@
       </select>
     </label>
     <span class="status" id="status"></span>
+    <span class="app-version" id="appVersion"></span>
   </header>
   <div class="main">
     <nav class="toolbar" id="toolbar"></nav>
@@ -298,6 +300,7 @@ var TEXTS = {
   typeLast: 'Musí ostať aspoň jeden typ.',
   newCableName: 'Nový kábel',
   newFile: 'Nový',
+  appVersion: 'verzia 1.0',
   cableTypeLabel: 'Typ kábla',
   wallColorLabel: 'Farba stien',
   wallHeight: 'Výška stien (cm)',
@@ -7460,6 +7463,7 @@ function init() {
   setStatus(TEXTS.statusNoFile);
   document.getElementById('openFileButton').addEventListener('click', openFile);
   document.getElementById('newFileButton').textContent = TEXTS.newFile;
+  document.getElementById('appVersion').textContent = TEXTS.appVersion;
   document.getElementById('newFileButton').addEventListener('click', newProject);
   document.getElementById('saveAsButton').addEventListener('click', saveAs);
   document.getElementById('saveAsButton').classList.toggle('hidden', !hostMode);
